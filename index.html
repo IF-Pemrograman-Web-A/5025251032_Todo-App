@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>To do App</h1>
+        <p>Manage your daily tasks</p>
+    </header>
+
+    <main>
+        <section class="todo-list">
+            <h2>Todo List</h2>
+
+            <div class="todo-item">
+                <input type="checkbox" id="todo1">
+                <label for="todo1">Finish WebPro Assignment</label>
+            </div>
+
+            <div class="todo-item">
+                <input type="checkbox" id="todo2">
+                <label for="todo2">Finish KKA Assignment</label>
+            </div>
+
+            <div class="todo-item">
+                <input type="checkbox" id="todo3">
+                <label for="todo3">Finish OOP Assignment</label>
+            </div>
+
+            <div class="todo-item">
+                <input type="checkbox" id="todo4">
+                <label for="todo4">Finish Discrete Mathematics Assignment</label>
+            </div>
+
+        </section>
+
+        <section class="todo-detail">
+            <h2>Add new Todo</h2>
+
+
+            <form> 
+                <label for="title">Todo Title</label> <input type="text" id="title" name="title" placeholder="Enter todo title" >
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Enter description"></textarea>
+
+                <button type="submit">Add Todo</button>
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; My Task Manager App</p>
+    </footer>
+
+</body>
+</html>
