@@ -11,45 +11,46 @@
     <header>
         <h1>To do App</h1>
         <p>Manage your daily tasks</p>
+        <button id="theme-btn">Dark Mode</button>
     </header>
 
     <main>
         <section class="todo-list">
             <h2>Todo List</h2>
 
-            <div class="todo-item">
-                <input type="checkbox" id="todo1">
-                <label for="todo1">Finish WebPro Assignment</label>
+            <div id = "todo-container">
+                <!-- Todo items will be showed here -->
             </div>
-
-            <div class="todo-item">
-                <input type="checkbox" id="todo2">
-                <label for="todo2">Finish KKA Assignment</label>
-            </div>
-
-            <div class="todo-item">
-                <input type="checkbox" id="todo3">
-                <label for="todo3">Finish OOP Assignment</label>
-            </div>
-
-            <div class="todo-item">
-                <input type="checkbox" id="todo4">
-                <label for="todo4">Finish Discrete Mathematics Assignment</label>
-            </div>
-
         </section>
 
         <section class="todo-detail">
-            <h2>Add new Todo</h2>
+            <div id="add-section">
+                <h2>Add new Todo</h2>
 
+                <form id="todo-form"> 
+                    <label for="title">Todo Title</label> <input type="text" id="title" name="title" placeholder="Enter todo title" >
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Enter description"></textarea>
 
-            <form> 
-                <label for="title">Todo Title</label> <input type="text" id="title" name="title" placeholder="Enter todo title" >
-                <label for="description">Description</label>
-                <textarea id="description" name="description" placeholder="Enter description"></textarea>
+                    <button type="submit">Add Todo</button>
+                </form>
+            </div>
 
-                <button type="submit">Add Todo</button>
-            </form>
+            <div id="edit-section" style="display: none;">
+                <h2>Edit Todo</h2>
+
+                <form id="edit-form">
+                    <label for="edit-title">Todo Title</label>
+                    <input type="text" id="edit-title" name="edit-title" placeholder="Enter todo title">
+                    <label for="edit-description">Description</label>
+                    <textarea id="edit-description" name="edit-description" placeholder="Enter description"></textarea>
+
+                    <div class="edit-buttons">
+                        <button type="submit">Save changes</button>
+                        <button type="button" id="cancel-edit">Cancel</button>
+                    </div>
+                </form>
+            </div>
 
         </section>
 
@@ -59,5 +60,6 @@
         <p>&copy; My Task Manager App</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>

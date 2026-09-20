@@ -21,6 +21,19 @@ header h1 {
     margin-bottom: 8px; 
 }
 
+header p {
+    margin-bottom: 15px;
+}
+
+#theme-btn {
+    padding: 10px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
 main {
     display: flex;
     gap: 20px;
@@ -41,27 +54,77 @@ main {
 }
 
 .todo-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
     padding: 15px;
     margin-bottom: 10px;
     border: 1px solid #c5008a;
     border-radius: 6px;
 }
 
+.todo-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .todo-item input {
     width: 18px;
     height: 18px;
+    flex-shrink: 0;
+}
+
+.todo-content label{
+    cursor: pointer;
 }
 
 .todo-item label {
     cursor: pointer;
 }
 
+.todo-description{
+    margin : 10px 0 0 28px;
+    color : #555;
+}
+
 .todo-item input:checked + label { 
     text-decoration: line-through; 
     color: #999; 
+}
+
+#cancel-edit {
+    margin-top: 10px;
+    background-color: #cf2e2e;
+}
+
+.todo-buttons {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.edit-button,
+.delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #fffa5c;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-buttons button {
+    margin-top: 0;
+}
+
+.delete-button {
+    background-color: #ff4c4c;
 }
 
 .todo-detail {
@@ -118,6 +181,37 @@ footer {
     color: white;
     padding: 20px;
     margin-top: 30px;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: white;
+}
+
+body.dark-mode .todo-list,
+body.dark-mode .todo-detail {
+    background-color: #555;
+    color: white;
+}
+
+body.dark-mode .todo-item {
+    border-color: #777;
+}
+
+body.dark-mode .todo-description {
+    color: #ccc;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+    background-color: #777;
+    color: white;
+    border-color: #999;
+}
+
+body.dark-mode #theme-btn {
+    background-color: #fffa5c;
+    color: #333;
 }
 
 @media (max-width: 768px) {
