@@ -11,12 +11,16 @@
     <header>
         <h1>To do App</h1>
         <p>Manage your daily tasks</p>
-        <button id="theme-btn">Dark Mode</button>
+        <button type ="button" id="theme-btn" aria-label="Switch to dark mode">Dark Mode</button>
     </header>
 
     <main>
         <section class="todo-list">
             <h2>Todo List</h2>
+
+            <div id="status-message" class="sr-only"
+                role="status" aria-live="polite">
+            </div>
 
             <div id = "todo-container">
                 <!-- Todo items will be showed here -->
@@ -32,11 +36,72 @@
                     <label for="description">Description</label>
                     <textarea id="description" name="description" placeholder="Enter description"></textarea>
 
+                    <label for="notification-time">
+                        Todo Notification Time
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="notification-time"
+                        name="notification-time">
+
+                    <small id="notification-help">
+                        Optional. You will receive a notification at this time.
+                    </small>
+
+                    <fieldset>
+                        <legend>Todo Image</legend>
+
+                        <p>You can capture an image using your device camera.</p>
+
+                        <div class="camera-controls">
+                            <button type="button" id="start-camera">
+                                Open Camera
+                            </button>
+
+                            <button type="button" id="capture-image" disabled>
+                                Capture Image
+                            </button>
+
+                            <button type="button" id="stop-camera" disabled>
+                                Close Camera
+                            </button>
+                        </div>
+
+                        <video
+                            id="camera"
+                            autoplay
+                            playsinline
+                            muted>
+                        </video>
+
+                        <canvas id="canvas" hidden></canvas>
+
+                        <img
+                            id="image-preview"
+                            class="image-preview"
+                            alt="Preview of captured todo image"
+                            hidden>
+
+                        <button
+                            type="button"
+                            id="remove-image"
+                            hidden>
+                            Remove Image
+                        </button>
+
+                        <p
+                            id="camera-status"
+                            role="status"
+                            aria-live="polite">
+                        </p>
+                    </fieldset>
+
                     <button type="submit">Add Todo</button>
                 </form>
             </div>
 
-            <div id="edit-section" style="display: none;">
+            <div id="edit-section" hidden>
                 <h2>Edit Todo</h2>
 
                 <form id="edit-form">
@@ -44,6 +109,15 @@
                     <input type="text" id="edit-title" name="edit-title" placeholder="Enter todo title">
                     <label for="edit-description">Description</label>
                     <textarea id="edit-description" name="edit-description" placeholder="Enter description"></textarea>
+
+                    <label for="edit-notification-time">
+                        Todo Notification Time
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="edit-notification-time"
+                        name="edit-notification-time">
 
                     <div class="edit-buttons">
                         <button type="submit">Save changes</button>
