@@ -209,6 +209,20 @@ button.delete:hover,
     background-color: #b02a37;
 }
 
+#installButton {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d20082;
+    color: white;
+    cursor: pointer;
+}
+
+#installButton:hover {
+    background-color: #a90068;
+}
+
 /* Forms */
 form {
     margin-bottom: 12px;

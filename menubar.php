@@ -33,4 +33,8 @@
     <p class="sidebar-note">
         Select a demo user to view their personal tasks.
     </p>
+
+    <button id="installButton" hidden>
+        Install Todo App
+    </button>
 </aside>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Todo App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff2a8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .offline-container {
+            padding: 30px;
+            background-color: white;
+            border-radius: 12px;
+            max-width: 350px;
+        }
+
+        h1 {
+            color: #d20082;
+        }
+
+        p {
+            color: #555;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #e83e9b;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <h1>You Are Offline!</h1>
+        <p>Your signal is gone, but don't worry. Please check your internet connection and try again.</p>
+        <button onclick="location.reload()">Try Again</button>
+    </div>
+</body>
+</html>

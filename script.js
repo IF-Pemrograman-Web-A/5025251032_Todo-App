@@ -55,17 +55,21 @@ function loadTheme() {
 
 loadTheme();
 
-themeButton.addEventListener('click', function() {
-    const darkMode = document.body.classList.toggle('dark-mode');
+if (themeButton) {
+    loadTheme();
 
-    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-    themeButton.textContent = darkMode ? 'Light Mode' : 'Dark Mode';
+    themeButton.addEventListener('click', function() {
+        const darkMode = document.body.classList.toggle('dark-mode');
 
-    themeButton.setAttribute(
-        'aria-label',
-        darkMode ? 'Switch to light mode' : 'Switch to dark mode'
-    );
-});
+        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+        themeButton.textContent = darkMode ? 'Light Mode' : 'Dark Mode';
+
+        themeButton.setAttribute(
+            'aria-label',
+            darkMode ? 'Switch to light mode' : 'Switch to dark mode'
+        );
+    });
+}
 
 if (userSelect) {
     userSelect.addEventListener('change', function() {
@@ -176,16 +180,18 @@ removeImage.addEventListener('click', function() {
     cameraStatus.textContent = 'Image removed.';
 });
 
-imageUpload.addEventListener('change', function() {
-    capturedImage = null;
-    capturedImageInput.value = '';
+if (imageUpload) {
+    imageUpload.addEventListener('change', function() {
+        capturedImage = null;
+        capturedImageInput.value = '';
 
-    if (imageUpload.files && imageUpload.files[0]) {
-        imagePreview.src = URL.createObjectURL(imageUpload.files[0]);
-        imagePreview.hidden = false;
-        removeImage.hidden = false;
-    }
-});
+        if (imageUpload.files && imageUpload.files[0]) {
+            imagePreview.src = URL.createObjectURL(imageUpload.files[0]);
+            imagePreview.hidden = false;
+            removeImage.hidden = false;
+        }
+    });
+}
 
 document.querySelectorAll('.edit-button').forEach(function(button) {
     button.addEventListener('click', function() {
@@ -331,12 +337,51 @@ function scheduleExistingNotifications() {
     });
 }
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('service-worker.js').catch(function() {});
-    });
-}
-
 scheduleExistingNotifications();
 
 window.addEventListener('beforeunload', stopCameraStream);
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./service_worker.js')
+            .then(function(registration) {
+                console.log('Service Worker registered:', registration.scope);
+            })
+            .catch(function(error) {
+                console.log('Service Worker registration failed:', error);
+            });
+    });
+}
+
+let deferredPrompt;
+const installButton = document.getElementById("installButton");
+
+if (installButton) {
+    window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        deferredPrompt = event;
+        installButton.hidden = false;
+    });
+
+    installButton.addEventListener("click", async () => {
+        if (!deferredPrompt) {
+            return;
+        }
+
+        deferredPrompt.prompt();
+
+        const result = await deferredPrompt.userChoice;
+
+        if (result.outcome === "accepted") {
+            console.log("App installed");
+        }
+
+        deferredPrompt = null;
+        installButton.hidden = true;
+    });
+
+    window.addEventListener("appinstalled", () => {
+        installButton.hidden = true;
+        deferredPrompt = null;
+    });
+}
